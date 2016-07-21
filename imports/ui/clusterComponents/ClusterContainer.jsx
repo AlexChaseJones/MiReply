@@ -13,7 +13,7 @@ export default class ClusterContainer extends TrackerReact(Component) {
 	}
 
 	componentWillMount() {
-		debugger;
+		console.log(this.props.convos)
 		let convos = this.props.convos.map((convo) => {
 			return (<ConvoCard convo={convo} key={convo._id} />)
 		})
@@ -72,7 +72,7 @@ export default class ClusterContainer extends TrackerReact(Component) {
 					<form id="filter_clusters_form">
 						<input type="text" name="filter_convos" ref="filter_convos" onInput={ this.filterConvos.bind(this) } placeholder="Filter convos..." />
 					</form>
-					<a href="/conversation/create"><button type="submit">New Cluster</button></a>
+					<a href="/create/convo"><button type="submit">New Cluster</button></a>
 					<div className="clearfix"></div>
 				</div>
 				{ this.state.filteredConvos }

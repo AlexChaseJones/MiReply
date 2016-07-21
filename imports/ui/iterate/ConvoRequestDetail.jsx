@@ -14,7 +14,7 @@ export default class ConvoRequestDetail extends Component {
 	confimConvo() {
 		Meteor.call('confirm_convo_request', this.props.convo._id,  (err, data) => {
 			if (err) console.log(err)
-
+			this.props.updateConvos();
 		})
 	}
 

@@ -1,7 +1,6 @@
-body, html {
+/*body, html {
 	font-family: Helvetica;
 	font-weight: 300;
-	/*background-image: url("../../../images/backgrounds/iss.jpg");*/
 	background-attachment: fixed;
    background-position: center center;
    background-size: cover; 
@@ -25,8 +24,12 @@ html {
 	clear: both;
 }
 
-.content {
-	width: 1030px;
+#content {
+	width: 100%;
+	padding-bottom: 65%;
+	overflow-y: scroll;
+	box-sizing: border-box;
+	box-shadow: inset 0px -50px 50px 10px black;
 	margin: 0 auto;
 }
 
@@ -73,6 +76,10 @@ html {
 	width: 190px;
 }
 
+.specialBox {
+	width: 271px;
+}
+
 .largeBox .message_content, .mediumBox .message_content{
 	padding: 15px 25px;
 }
@@ -85,19 +92,19 @@ html {
 	visibility: hidden;
 }
 
-.memberOne h2, .memberOne h4 {
+.memberOne h2, .memberOne h4, .bookmarks .memberOne {
 	color: rgba(87, 240, 125, .9);
 }
 
-.memberTwo h2, .memberTwo h4 {
+.memberTwo h2, .memberTwo h4, .bookmarks .memberTwo {
 	color: rgba(87, 240, 240, .9);
 }
 
-.memberThree h2, .memberThree h4 {
+.memberThree h2, .memberThree h4, .bookmarks .memberThree {
 	color: rgba(240, 143, 87, .9);
 }
 
-.memberFour h2, .memberFour h4 {
+.memberFour h2, .memberFour h4, .bookmarks .memberFour {
 	color: rgba(187, 87, 240, .9);
 }
 
@@ -182,15 +189,35 @@ textarea:focus {
     outline: none;
 }
 
-.new_message button {
-	width: 100%;
+.new_message button[name="messenger"] {
+	width: 60%;
 	border: none;
+	background-color: rgba(255,255,255,.75);
+	border-radius: 4px;
+	height: 18px;
+	font-size: .75em;
+}
+
+.new_message .bookmark {
+	width: 35%;
+	height: 14px;
+	margin-left: 5px;
+	font-size: .75em;
+	border: none;
+	float: right;
+	padding-top: 4px;
 	background-color: rgba(255,255,255,.75);
 	border-radius: 4px;
 }
 
+.new_message .bookmark:hover {
+	background-color: rgba(57,121,194,1);
+	color: white;
+}
+
 .new_message button:hover {
-	background-color: rgba(255,255,255,.95);
+	background-color: rgba(60,180,57,1);
+	color: white;
 }
 
 .activeBox .rotate_45 {
@@ -303,3 +330,49 @@ textarea:focus {
 	min-height: 25px;
 	font-size: .85em;
 }
+
+.info_content h2 {
+	color: white;
+	margin: 7px 0px;
+}
+
+.info_content h3 {
+	font-size: 2em;
+	color: rgba(255,255,255,.2);
+	margin-top: 35px;
+	font-weight: 700;
+}
+
+.info_content ul  {
+
+}
+
+.info_content ul li {
+	float: left;
+	display: inline-block;
+	font-size: .85em;
+	width:85px;
+	line-height: 17px;
+	margin: 2px;
+	padding: 5px 0px;
+	border-radius: 5px;
+	background-color: rgba(255,255,255,.2)
+}
+
+.info_content ul li:hover {
+	cursor: pointer;
+	background-color: rgba(255,255,255,.3)
+}
+
+.new_messages li {
+	color: rgba(255,102,102,.9);
+}
+
+.activeBookmark {
+	background-color: rgba(255,255,255,.5) !important;
+}
+
+.bigLoader {
+	color: white;
+	font-size: 10em;
+}*/

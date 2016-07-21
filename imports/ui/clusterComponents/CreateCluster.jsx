@@ -30,6 +30,7 @@ export default class CreateCluster extends TrackerReact(Component) {
 	}
 
 	handleSubmit(e) {
+		debugger;
 		e.preventDefault();
 		var data = {};
 		$("#friends option").each(function(i,el) {  
@@ -41,6 +42,8 @@ export default class CreateCluster extends TrackerReact(Component) {
 
         if (memberOne == this.props.user) {
         	memberOne = this.props.Id;
+        }else {
+        	memberOne = (_.invert(data)[memberOne])
         }
 
         var memberTwo = this.refs.memberTwo.value;
@@ -49,7 +52,7 @@ export default class CreateCluster extends TrackerReact(Component) {
         var memberThree = this.refs.memberThree.value;
         memberThree = ($('#friends [value="' + memberThree + '"]').data('value'));
         //Simple condition checks.
-        debugger;
+
         if (!memberTwo && !memberThree) { //This protects from two empty inputs from matching.
         	if (memberOne == memberTwo || memberOne == memberThree) {
         		Bert.alert('Looks like you put the same friend twice, try again.', 'danger', 'fixed-top', 'fa-frown-o');
@@ -61,8 +64,8 @@ export default class CreateCluster extends TrackerReact(Component) {
         } else if (!memberTwo && memberThree) {
         	Bert.alert('Please dont skip Member Two', 'danger', 'fixed-top', 'fa-frown-o');
         }
-        //FUTURE: PUT A CHECK IN HERE TO MAKE SURE THE INPUTED MEMBER EXISTS IN THE FRIENDS ARRAY. no time right now. must move forward.
-        //Build Kollab object
+        // FUTURE: PUT A CHECK IN HERE TO MAKE SURE THE INPUTED MEMBER EXISTS IN THE FRIENDS ARRAY. no time right now. must move forward.
+        // Build Kollab object
         let cluster = {
 			"name": this.refs.kollabName.value.trim().toLowerCase(),
 			"public": false,
@@ -72,13 +75,15 @@ export default class CreateCluster extends TrackerReact(Component) {
 					id: Meteor.userId(),
 					firstName: Meteor.user().profile.firstName,
 					lastName: Meteor.user().profile.lastName,
-					position: [1]
+					position: [1],
+					bookmarks: []
 				},
 				{
 					id: memberOne,
 					firstName: this.refs.memberOne.value.split(' ')[0],
 					lastName: this.refs.memberOne.value.split(' ')[1],
-					position: [1]
+					position: [1],
+					bookmarks: []
 				}
 			],
 			"lastMessage": new Date()
@@ -91,7 +96,8 @@ export default class CreateCluster extends TrackerReact(Component) {
         			id:memberTwo,
         			firstName:this.refs.memberTwo.value.split(' ')[0],
         			lastName:this.refs.memberTwo.value.split(' ')[1],
-        			position: [1]
+        			position: [1],
+        			bookmarks: []
         		}
         	)
         	memberIds.push(memberTwo)
@@ -102,18 +108,22 @@ export default class CreateCluster extends TrackerReact(Component) {
         			id:memberThree,
         			firstName:this.refs.memberThree.value.split(' ')[0],
         			lastName:this.refs.memberThree.value.split(' ')[1],
-        			position: [1]
+        			position: [1],
+        			bookmarks: []
         		}
         	)
         	memberIds.push(memberThree)
         }
 
         Meteor.call('create_cluster', cluster, (err, data) => {
+
 			if (err) console.log(err)
 			else if (!err) {
-				console.log(data)
-				Meteor.call('add_user_cluster', data, memberIds, (err, data) => {
+				clusterId = data;
+				Meteor.call('add_user_cluster', data, memberIds, (err, data2) => {
+
 					if (err) console.log(err)
+						FlowRouter.go("/conversation/view/" + data);
 				})
 			}
 		})
@@ -135,7 +145,26 @@ export default class CreateCluster extends TrackerReact(Component) {
 		}
 	}
 
+	showIcons() {
+		let icons = []
+		for (var i=1; i<=100; i++) {
+			icons.push(
+				<li>
+				    <label>
+				        <input type="radio" name="icon" value={i} required/>
+				        <img src={"/images/collab-buttons-v2/"+i+".png"} />
+				    </label>
+				</li>
+			)
+		}
+		return icons;
+	}
+
 	render() {
+		document.body.style.backgroundColor = 'rgb(246,240,235)';
+		if (!Meteor.user()) {
+			return(<h1>Loading...</h1>)
+		} else {
 		let friendsData;
 		let confirmedFriends = Meteor.user().profile.friends.map((friend) => {
 			if (friend.set) {
@@ -197,34 +226,11 @@ export default class CreateCluster extends TrackerReact(Component) {
 									<div className="clearfix"></div>
 									<div className="line_seperator_md"></div>
 									<div className="icons">
-									<h2>Choose an Icon for your Kollab! (required)</h2>
-									<ul>
-									    <li>
-									        <label>
-									            <input type="radio" name="icon" value="billing" required/>
-									            <img src="/images/collab-buttons/billing-btn.png" />
-									        </label>
-									    </li>
-									    <li>
-									        <label>
-									            <input type="radio" name="icon" value="engineer" />
-									            <img src="/images/collab-buttons/engineer-btn.png" />
-									        </label>
-									    </li>
-									    <li>
-									        <label>
-									            <input type="radio" name="icon" value="ghost" />
-									            <img src="/images/collab-buttons/ghost-btn.png" />
-									        </label>
-									    </li>
-									    <li>
-									        <label>
-									            <input type="radio" name="icon" value="meteor" />
-									            <img src="/images/collab-buttons/meteor-btn.png" />
-									        </label>
-									    </li>
-									</ul>
-									<button type="submit">Create</button>
+										<h2>Choose an Icon for your Kollab! (required)</h2>
+										<ul>
+										    { this.showIcons() }
+										</ul>
+										<button type="submit">Create</button>
 									</div>
 								</form>
 							</div>
@@ -237,5 +243,6 @@ export default class CreateCluster extends TrackerReact(Component) {
 			</div>
 			)
 		}
+	}
 	}
 }

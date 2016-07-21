@@ -63,7 +63,7 @@ FlowRouter.route('/edit', {
 	}
 })
 
-FlowRouter.route('/conversation/create', {
+FlowRouter.route('/create/convo', {
 	action(params, queryParams) {
 		if (Meteor.userId()) {
 			mount(MainLayout, {

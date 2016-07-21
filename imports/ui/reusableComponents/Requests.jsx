@@ -16,7 +16,7 @@ export default class Requests extends Component {
 		friendRequests = friendRequests.filter((fr) => {return fr != undefined})
 		friendRequests = Meteor.users.find({_id: {$in: friendRequests}}).fetch()
 		return friendRequests.map((friend) => {
-			return (<div><FriendRequestDetail user={friend} key={friend._id} /><div className="line_seperator"></div></div>)
+			return (<div><FriendRequestDetail updateFriends={this.props.update} user={friend} key={friend._id} /><div className="line_seperator"></div></div>)
 		})
 	}	
 
@@ -24,10 +24,11 @@ export default class Requests extends Component {
 		let convoRequests = Meteor.user().profile.collabs.map((convo) => {
 			if (!convo.set) return convo.id
 		})
+
 		convoRequests = convoRequests.filter((fr) => {return fr != undefined})
 		convoRequests = Kollabs.find( {_id: { $in: convoRequests } }).fetch()
 		return convoRequests.map((convo) => {
-			return (<div><ConvoRequestDetail convo={convo} key={convo._id} /><div className="line_seperator"></div></div>)
+			return (<div><ConvoRequestDetail updateConvos={this.props.update} convo={convo} key={convo._id} /><div className="line_seperator"></div></div>)
 		})
 	}
 

@@ -17,12 +17,22 @@ Meteor.methods({
 			if (err) throw err;
 		});
 	},
+	'add_child'(target) {
+		console.log(target)
+		Messages.update(target._id,
+			{$inc: {children: 1}}
+		)
+	}
 
 })
 
 messagesSchema = new SimpleSchema({
 	convoRef: {
 		type: String
+	},
+	children: {
+		type: Number,
+		optional: true
 	},
 	message: {
 		type: String

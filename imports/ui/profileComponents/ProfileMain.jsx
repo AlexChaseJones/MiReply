@@ -30,6 +30,7 @@ export default class ProfilePage extends TrackerReact(Component) {
 
 
 	render() {
+		document.body.style.backgroundImage = 'none';
 		let userData = Meteor.users.find({'profile.href': this.props.href}).fetch();
 		let friendData = Meteor.users.find().fetch();
 		let user = Meteor.users.find({'profile.href': this.props.href}).fetch();

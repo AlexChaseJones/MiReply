@@ -25,6 +25,20 @@ Meteor.methods({
 			return data;
 		});
 	},
+	'add_bookmark'(bookmark, convo_id) {
+		Kollabs.update({_id: convo_id, 'members.id': this.userId},
+			{$push: {'members.$.bookmarks': bookmark} }
+		)
+	},
+	'update_member_info'(position, convo_id) {
+		Kollabs.update({_id: convo_id, 'members.id': this.userId},
+			{$set: {
+				'members.$.position': position,
+				'members.$.lastViewed': new Date()
+			}}
+		)
+		Kollabs
+	}
 
 
 })
@@ -54,7 +68,20 @@ kollabSchema = new SimpleSchema({
 	"members.$.position": {
 		type: Array
 	},
+	"members.$.lastViewed": {
+		type: Date,
+		optional: true
+	},
 	"members.$.position.$": {
+		type: Number
+	},
+	"members.$.bookmarks": {
+		type: Array
+	},
+	"members.$.bookmarks.$": {
+		type:Array
+	},
+	"members.$.bookmarks.$.$": {
 		type: Number
 	},
 	readers: {

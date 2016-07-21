@@ -10,45 +10,80 @@ export default class FriendsMain extends TrackerReact(Component) {
 	constructor() {
 		super();
 		self = this;
-		this.updateCount = this.updateCount.bind(this);
+		this.setIntialState = this.setIntialState.bind(this);
 		const subscription =  Meteor.subscribe('viewFriends', {
 			onReady: function () {
 				self.state.ready = true;
-				self.updateCount();
+
+				self.setIntialState();
 			}
 		})
 		this.state = {
 				subscription: subscription,
 				ready: false,
-				friendCount: 0
+				friendCount: 0,
+				friends: 'banana'
 		}
 	}
 
-	updateCount() {
-		console.log('here')
-		this.setState({
-			friendCount: Meteor.user().profile.topFriends.length
-		})
+	setIntialState() {
+		debugger;
+		if (Meteor.user()) {
+			let confirmedFriends = Meteor.user().profile.friends.filter((friend) => { //This filters out the set true friends on User side.
+				if (friend.set) return true;
+				else return false;
+			}).map((friend) => {
+				return friend.id;
+			});
+
+			friendsData = Meteor.users.find({_id : {$in: confirmedFriends}}).fetch();
+
+			friendsData = friendsData.filter((friend) => {
+				for (var i = 0; i < friend.profile.friends.length; i++) {
+					if (friend.profile.friends[i].id == Meteor.userId()) {
+						if (friend.profile.friends[i].set) {
+							return friend;
+						}
+					}
+				}
+			})
+
+			this.setState({
+				friendCount: Meteor.user().profile.topFriends.length,
+				friends: friendsData
+			})
+		}
+	}
+
+	generateFriends() {
+		if (this.state.friends == "banana") {
+			return(<div className="loader">Loading...</div>)
+		} else if (this.state.friends == 0) {
+			return (<h2>No Friends!</h2>)
+		} else {
+			return (
+				<div>
+					<TopFriends 
+						friends={this.state.friends} 
+						friendCount={this.state.friendCount} 
+						updateCount={this.updateCount}
+					/>
+
+					<div className="line_seperator_lg"></div>
+
+					<AllFriends 
+						friends={this.state.friends} 
+						updateCount={this.updateCount}
+					/>
+				</div>
+			)
+		}
 	}
 
 	render() {
-		let friendsData = [];
+		document.body.style.backgroundImage = 'none';
+		document.body.style.backgroundColor = 'rgb(246,240,235)';
 		if (Meteor.user()) {
-			let confirmedFriends = Meteor.user().profile.friends.map((friend) => {
-				if (friend.set) {
-					return friend.id
-				} else return
-			});
-
-			confirmedFriends = confirmedFriends.filter((cf) => {return cf != undefined})
-				console.log(confirmedFriends)
-			friendsData = Meteor.users.find({_id : {$in: confirmedFriends}}).fetch();
-		}
-
-		if (friendsData.length == 0) {
-			return(<div className="loader">Loading...</div>)
-		} else {
-			console.log(friendsData)
 			return (
 			<div>
 				<div className="header">
@@ -81,7 +116,7 @@ export default class FriendsMain extends TrackerReact(Component) {
 						<div className="aside_left">
 							<RecentKollabs />
 
-							<Requests />
+							<Requests update={this.setIntialState} />
 						</div>
 
 						<div className="main_right">
@@ -90,9 +125,7 @@ export default class FriendsMain extends TrackerReact(Component) {
 									<span>Friends</span>
 								</div>
 								<div className="main_content">
-									<TopFriends friends={friendsData} friendCount={this.state.friendCount} updateCount={this.updateCount}/>
-									<div className="line_seperator_lg"></div>
-									<AllFriends friends={friendsData} updateCount={this.updateCount}/>
+									{ this.generateFriends() }
 								</div>
 							</div>
 						</div>		
@@ -101,6 +134,8 @@ export default class FriendsMain extends TrackerReact(Component) {
 				<script src="scripts/cardFlips.js"></script>
 			</div>
 			)
+		} else {
+			return(<div className="loader">Loading...</div>)
 		}
 	}
 }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 import HiddenBox from './HiddenBox.jsx';
 import InactiveBox from './InactiveBox.jsx';
 import ActiveBox from './ActiveBox.jsx';
@@ -19,7 +21,7 @@ export default class TierContainer extends Component {
  					<div>
 	 					<HiddenBox />
 	 					<HiddenBox />
-	 					<ActiveBox members={this.props.members} message={messages[0]} handleSubmit={this.props.handleSubmit}/>
+	 					<ActiveBox members={this.props.members} message={messages[0]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} />
 	 					<HiddenBox />
 	 					<HiddenBox />
  					</div>	
@@ -30,7 +32,7 @@ export default class TierContainer extends Component {
  					<div>
 		 				<HiddenBox />
 		 				<HiddenBox />
-		 				<ActiveBox members={this.props.members} message={messages[0]} handleSubmit={this.props.handleSubmit}/>
+		 				<ActiveBox members={this.props.members} message={messages[0]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} />
 		 				<InactiveBox members={this.props.members} message={messages[1]} updatePosition={this.props.updatePosition}/>
 		 				<HiddenBox />
 	 				</div>
@@ -40,7 +42,7 @@ export default class TierContainer extends Component {
 	 				<div>
 		 				<HiddenBox />
 		 				<HiddenBox />
-		 				<ActiveBox members={this.props.members}  message={messages[0]} handleSubmit={this.props.handleSubmit}/>
+		 				<ActiveBox members={this.props.members}  message={messages[0]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} />
 		 				<InactiveBox members={this.props.members} message={messages[1]} updatePosition={this.props.updatePosition}/>
 		 				<InactiveBox members={this.props.members} message={messages[2]} updatePosition={this.props.updatePosition}/>
 	 				</div>
@@ -53,7 +55,7 @@ export default class TierContainer extends Component {
  					<div>
 		 				<HiddenBox />
 		 				<InactiveBox members={this.props.members} message={messages[0]} updatePosition={this.props.updatePosition}/>
-		 				<ActiveBox members={this.props.members}  message={messages[1]} handleSubmit={this.props.handleSubmit}/>
+		 				<ActiveBox members={this.props.members}  message={messages[1]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} />
 		 				<HiddenBox />
 		 				<HiddenBox />
 	 				</div>
@@ -63,7 +65,7 @@ export default class TierContainer extends Component {
 	 				<div>
 		 				<HiddenBox />
 		 				<InactiveBox members={this.props.members} message={messages[0]} updatePosition={this.props.updatePosition}/>
-		 				<ActiveBox members={this.props.members} message={messages[1]} handleSubmit={this.props.handleSubmit}/>
+		 				<ActiveBox members={this.props.members} message={messages[1]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} />
 		 				<InactiveBox members={this.props.members} message={messages[2]}updatePosition={this.props.updatePosition}/>
 		 				<HiddenBox />
 	 				</div>
@@ -74,7 +76,7 @@ export default class TierContainer extends Component {
  				<div>
 	 				<InactiveBox members={this.props.members} message={messages[0]} updatePosition={this.props.updatePosition}/>
 	 				<InactiveBox members={this.props.members} message={messages[1]} updatePosition={this.props.updatePosition}/>
-	 				<ActiveBox members={this.props.members} message={messages[2]} handleSubmit={this.props.handleSubmit}/>
+	 				<ActiveBox members={this.props.members} message={messages[2]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} />
 	 				<HiddenBox />
 	 				<HiddenBox />
  				</div>
@@ -118,13 +120,20 @@ export default class TierContainer extends Component {
 
 	render() {
 		return (
+			<ReactCSSTransitionGroup
+				component="span"
+				transitionName="tierLoad"
+				transitionEnterTimeout={600}
+				transitionAppearTimeout={600}
+				transitionLeaveTimeout={400}
+				transitionAppear={true}
+			>
 			<div id="tierTwo" className="tier">
-				<div className="tierContent">
+				<div className="tierContent">	
 					{this.generateMessages(this.props.messages)}
-					
-					
 				</div>
 			</div>
+			</ReactCSSTransitionGroup>
 		)
 	}
 }

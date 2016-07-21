@@ -45,7 +45,22 @@ export default class AllFriends extends Component {
 		})
 	}
 
-
+	componentWillReceiveProps(nextProps) {
+		let friends = nextProps.friends.map((friend) => {
+			console.log(friend)
+			if (friend._id != Meteor.userId()) {
+				return (<FriendCard user={friend} updateCount={this.props.updateCount} key={friend._id} />)
+			}
+			return null
+		})
+		if (friends.length == 0) {
+			let friends = [];
+			friends.push(<h1 key='1'>No Friends</h1>)
+		}
+		this.setState({
+			filteredFriends: friends
+		})
+	}
 
 	render() {
 		return (

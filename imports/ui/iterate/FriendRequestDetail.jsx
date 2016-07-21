@@ -14,6 +14,7 @@ export default class FriendRequestDetail extends Component {
 	confimFriend() {
 		Meteor.call('confirm_friend_request', this.props.user._id,  (err, data) => {
 			if (err) console.log(err)
+			this.props.updateFriends();
 
 		})
 	}

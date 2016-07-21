@@ -23,7 +23,7 @@ export default class ConvoCard extends Component {
 				<div className="cluster_card">
 					<figure className="front">
 						<div className="contained">
-							<img onClick={this.handleHref} src={"/images/collab-buttons/"+ this.props.convo.image +"-btn.png"} />
+							<img onClick={this.handleHref} src={"/images/collab-buttons/"+this.props.convo.image +".png"} />
 							<h3 onClick={this.handleHref} >{this.props.convo.name}</h3>
 							<ul>
 								{ this.showMembers() }

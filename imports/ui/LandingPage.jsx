@@ -7,7 +7,6 @@ export default class landingPage extends TrackerReact(Component) {
 		super();
 		this.createUser = this.createUser.bind(this)
 		this.logIn = this.logIn.bind(this)
-		this.addImage = this.addImage.bind(this)
 	}
 
 	componentWillMount() {
@@ -44,7 +43,7 @@ export default class landingPage extends TrackerReact(Component) {
 				location: 'not specified',
 				occupation: 'not specified',
 				company: 'not specified',
-				href: Math.random(),
+				href: 'DEFAULT',
 				birthday: date,
 				education: {
 					degree: 'not specified',
@@ -62,8 +61,8 @@ export default class landingPage extends TrackerReact(Component) {
 			if (!err) {
 				Meteor.call('set_profile_href', (err, data) => {
 					if (err) console.log(err)
+					FlowRouter.go('/profile/'+ Meteor.user().profile.href)
 				})
-				FlowRouter.redirect('/profile/'+ Meteor.userId())
 			} else { console.log(err) }
 		})
 	}
@@ -74,30 +73,18 @@ export default class landingPage extends TrackerReact(Component) {
 		e.preventDefault();
 		Meteor.loginWithPassword(email, password, function(err){
 			if (!err) {
-				FlowRouter.go('/profile/'+ Meteor.userId())
+				FlowRouter.go('/profile/'+ Meteor.user().profile.href)
 			} else {
 				console.log(err)
 			}
 		})
 	}
 
-	addImage(e, t) {
-		e.preventDefault();
-		var files = this.refs.userImage.files;
-	    Resizer.resize(files[0], {width: 300, height: 300, cropSquare: true}, function(err, file) {
-	    	var uploader = new Slingshot.Upload("myFileUploads");
-
-	    	uploader.send(file, function (err, downloadUrl) {
-	        	if (err) console.log(err);
-
-	        	console.log(downloadUrl);
-	      	});
-	    });
-	}
-
 	render(){
-		if (Meteor.user()) {
-			window.location = "/profile/"+ Meteor.user().profile.href;
+		document.body.style.backgroundImage = 'url("/images/backgrounds/saturn.jpg")';
+		document.body.style.backgroundColor = 'none';
+		if (Meteor.user() && Meteor.user().profile.href != "DEFAULT") {
+			FlowRouter.go("/profile/"+ Meteor.user().profile.href);
 			return;
 		}
 		return(
@@ -159,11 +146,7 @@ export default class landingPage extends TrackerReact(Component) {
 						</div>
 					</div>
 				</div>
-
-					{/*<form onSubmit={this.addImage}>
-						<input type= "file" ref="userImage"/>
-						<button type="submit">Upload</button>
-					</form>*/}
+				<div className="clearfix"></div>
 			</div>
 		)
 	}

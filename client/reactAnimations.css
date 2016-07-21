@@ -1,0 +1,43 @@
+.activeBoxLoad-enter, .activeBoxLoad-appear {
+  animation: slideIn 0.25s cubic-bezier(.61,1.6,.56,1.59)
+}
+
+.activeBoxLoad-appear {
+	animation: slideIn 0.25s cubic-bezier(.61,1.6,.56,1.59)	
+}
+
+.tierLoad-enter, .tierLoad-appear {
+  animation: slideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+.tierLoad-appear {
+	animation: slideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)	
+}
+
+.tierLoad-leave {
+	animation: slideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)		
+}
+
+@keyframes slideIn {
+    from{
+        opacity: 1;
+        transform: scale3d(.7, 1, 1);
+    }
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+      }
+}
+
+@keyframes slideUp {
+    from{
+    	z-index: -10;
+        opacity: 0;
+        transform: translate3d(0, -40px, 0);
+    }
+    to {
+    	z-index: 1;
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+}

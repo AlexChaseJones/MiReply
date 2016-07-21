@@ -16,7 +16,12 @@ if (Meteor.isServer) {
 	})
 }
 
-
+if (Meteor.isClient) {
+		$('body').css('background-image', 'url("../../../images/backgrounds/iss.jpg")');
+		$('body').css('background-attachment', 'fixed');
+		$('body').css('background-position', 'center center');
+		$('body').css('background-size', 'cover');
+}
 
 Meteor.methods({
 	'send_friend_request'(friendId) {
@@ -88,6 +93,7 @@ Meteor.methods({
 				set: true}}
 			}
 		)
+		console.log(members)
 		Meteor.users.update({_id: {$in: members}},
 			{$push:{"profile.collabs" :{ id: clusterId,
 				set: false}}

@@ -26,25 +26,31 @@ $(document).on('mouseleave', '.inactiveBox', function(){
 })
 
 $(document).on('click', '.new_message_container img', function(){
-	$('.text_area').siblings('button').remove();
+	$('.text_area').siblings('button[name="messenger"]').remove();
 	$('.text_area').remove();
 	$('.new_message').addClass('hidden');
 	$('.rotate_45').removeClass('rotate_45');
 	$('.border_bottom_flat').removeClass('border_bottom_flat');
 	$(this).addClass('rotate_45');
-	$(this).siblings('.new_message').append('<textarea type="text" class="text_area" name="message"/><button type="submit">Send</button>');
+	$(this).siblings('.new_message').prepend('<textarea type="text" class="text_area" name="message"/><button type="submit" name="messenger">Send</button>');
 	$(this).siblings('.new_message').removeClass('hidden');
 	$('.text_area').focus();
 	$(this).parent().parent().parent('.activeBox').addClass('border_bottom_flat');
 })
 
-$(document).on('click', '.rotate_45', function(){
+function removeForm(){
 	$('.new_message').addClass('hidden');
 	$('.rotate_45').removeClass('rotate_45');
 	$('.border_bottom_flat').removeClass('border_bottom_flat')
-	$('.text_area').siblings('button').remove();
+	$('.text_area').siblings('button[name="messenger"]').remove();
 	$('.text_area').remove();
-})
+}
+
+$(document).on('click', '.rotate_45', removeForm)
+
+$(document).on('click', '.inactiveBox', removeForm)
+
+$(document).on('click', '.bookmark', removeForm)
 
 $(document).on('keydown', '.new_message', function(e){
   	if(e.which == 13){
@@ -68,7 +74,7 @@ $(document).on('submit', 'form', function(e){
 	$('.new_message').addClass('hidden');
 	$('.rotate_45').removeClass('rotate_45');
 	$('.border_bottom_flat').removeClass('border_bottom_flat')
-	$('.text_area').siblings('button').remove();
+	$('.text_area').siblings('button[name="messenger"]').remove();
 	$('.text_area').remove();
 	// e.preventDefault();
 	// $(this).submit();

@@ -8,7 +8,7 @@ export default class TopFriendCard extends Component {
 	}
 
 	handleHref() {
-		window.location = '/profile/'+this.props.user._id
+		window.location = '/profile/'+this.props.user.profile.href;
 	}
 
 	removeFromTopFriends() {
@@ -29,7 +29,7 @@ export default class TopFriendCard extends Component {
 								<img src={this.props.user.profile.image} />
 							</div>
 							<h2 onClick={this.handleHref}>{this.props.user.profile.firstName} <br/>{this.props.user.profile.lastName}</h2>
-							<a href={"/conversation/create/?Id=" + this.props.user._id + "&user=" + this.props.user.profile.firstName + ' ' + this.props.user.profile.lastName } className="add_cluster">
+							<a href={"/create/convo/?Id=" + this.props.user._id + "&user=" + this.props.user.profile.firstName + ' ' + this.props.user.profile.lastName } className="add_cluster">
 								<img src="/images/icons/add-cluster-blk.png" />
 								<h4>New Cluster</h4>
 							</a>

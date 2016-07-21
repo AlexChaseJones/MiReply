@@ -17,9 +17,9 @@ export default class InactiveBox extends Component {
 
 	generateDots() {
 		let dots = [];
-		// for (var i = 0; i<this.props.message.children; i++) {
-		// 	dots.push(<img src="/images/icons/counter.png" />)
-		// }
+		for (var i = 0; i<this.props.message.children; i++) {
+			dots.push(<img src="/images/icons/counter.png" key={i+5}/>)
+		}
 		return dots;
 	}
 

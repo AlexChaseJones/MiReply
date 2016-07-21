@@ -29,7 +29,7 @@ export default class ProfileHeader extends Component {
 			for (var i = 0; i < this.props.user.profile.friends.length; i++) {
 				if ( this.props.user.profile.friends[i].id == Meteor.userId() ) {//i.e. finds the current user in the viewed users friends array
 					if ( this.props.user.profile.friends[i].set ) { //i.e. checks if the viewed user has set their friendship yet.
-						return (<a href={"/conversation/create/?Id=" + this.props.user._id + "&user=" + this.props.user.profile.firstName + ' ' + this.props.user.profile.lastName }><button id="msg_friend">New Convo</button></a>)
+						return (<a href={"/create/convo/?Id=" + this.props.user._id + "&user=" + this.props.user.profile.firstName + ' ' + this.props.user.profile.lastName }><button id="msg_friend">New Convo</button></a>)
 					} else {
 						return (<button id="pending_friend">Request Pending</button>)
 					}

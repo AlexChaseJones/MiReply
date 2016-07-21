@@ -10,19 +10,22 @@ export default class ClustersMain extends TrackerReact(Component) {
 	constructor() {
 		super();
 		self = this;
+		this.setConvos = this.setConvos.bind(this)
 		const subscription =  Meteor.subscribe('viewConvosForUser', {
 			onReady: function () {
 				self.state.ready = true;
+				self.setConvos();
 			}
 		})
 
 		this.state = {
 				subscription: subscription,
 				ready: false,
+				convos: 'banana'
 		}
 	}
 
-	render() {
+	setConvos() {
 		let convoData = [];
 		if (Meteor.user()) {
 			let confirmedConvos = Meteor.user().profile.collabs.map((convo) => {
@@ -32,11 +35,24 @@ export default class ClustersMain extends TrackerReact(Component) {
 			});
 			confirmedConvos = confirmedConvos.filter((cf) => {return cf != undefined});
 			convoData = Kollabs.find({_id : {$in: confirmedConvos }}).fetch();
+			this.setState({
+				convos: convoData
+			})
 		}
-		if (convoData.length == 0) {
+	}	
+
+	generateClusters() {
+		if (this.state.convos == 'banana') {
 			return(<div className="loader">Loading...</div>)
+		} else if (this.state.convos.length == 0) {
+			return (<h2>No Convos!</h2>)
 		} else {
-			console.log(convoData)
+			return (<ClusterContainer convos={this.state.convos} />)
+		}
+	}
+
+	render() {
+		if (Meteor.user()) {
 			return (
 			<div>
 				<div className="header">
@@ -69,7 +85,7 @@ export default class ClustersMain extends TrackerReact(Component) {
 						<div className="aside_left">
 							<RecentKollabs />
 
-							<Requests />
+							<Requests update={this.setConvos}/>
 						</div>
 
 						<div className="main_right">
@@ -78,7 +94,7 @@ export default class ClustersMain extends TrackerReact(Component) {
 									<span>Clusters</span>
 								</div>
 								<div className="main_content">
-									<ClusterContainer convos={convoData} />
+									{ this.generateClusters() }
 								</div>
 							</div>
 						</div>		
@@ -87,6 +103,8 @@ export default class ClustersMain extends TrackerReact(Component) {
 				<script src="scripts/cardFlips.js"></script>
 			</div>
 			)
+		} else {
+			return(<div className="loader">Loading...</div>)
 		}
 	}
 }
