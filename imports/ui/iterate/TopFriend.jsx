@@ -16,7 +16,7 @@ export default class TopFriend extends Component {
 			<a href={"/profile/" + this.props.user.profile.href}><li>
 				<img src={ this.props.user.profile.image } />
 				<br />
-				<span>{ this.props.user.profile.firstName + ' ' + this.props.user.profile.lastName }</span>
+				<span>{ this.props.user.profile.firstName}</span>
 			</li></a>
 		)
 	}

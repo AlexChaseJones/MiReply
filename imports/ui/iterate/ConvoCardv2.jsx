@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class ConvoCard extends Component {
+export default class ConvoCardv2 extends Component {
 	constructor() {
 		super();
 		this.handleHref = this.handleHref.bind(this);
@@ -13,37 +13,34 @@ export default class ConvoCard extends Component {
 
 	showMembers() {
 		return this.props.convo.members.map((member) => {
-			return (<li>{member.firstName + ' ' + member.lastName}</li>)
+			return (<li key={member.id}>{member.firstName + ' ' + member.lastName}</li>)
 		})
+	}
+
+	showMessages() {
+		//in the works
 	}
 
 	render() {
 		return (
 			<div className="cluster_card_3d_container">
 				<div className="cluster_card">
-					<figure className="front">
+					<figure onClick={this.handleHref} className={"front " + this.props.color}>
 						<div className="contained">
-							<img onClick={this.handleHref} src={"/images/collab-buttons-v2/"+this.props.convo.image +".png"} />
 							<h3 onClick={this.handleHref} >{this.props.convo.name}</h3>
 							<ul>
 								{ this.showMembers() }
 							</ul>
 							<div className="clearfix"></div>
-							<h4>0 unread messages</h4>
-							<img className="flip_icon_cluster" src="../../../images/icons/flipper.png" />
+							<div className="card_footer">		
+								<h4>{this.showMessages() }</h4>
+								<img className="flip_icon_cluster" src={"/images/collab-buttons-v2/"+this.props.convo.image +".png"} />
+							</div>
 						</div>
 					</figure>
-					<figure className="back">
+					<figure onClick={this.handleHref} className="back">
 						<div className="contained">
-							<div>
-								<img src="../../../images/icons/editor.png" />
-								<h3>Edit Cluster</h3>
-							</div>
-							<span>
-								<img src="../../../images/icons/close.png" />
-								<h4>Leave</h4>
-							</span>
-							<img className="flip_icon_close" src="../../../images/icons/flipper.png" />
+							<h2>View Conversation</h2>
 						</div>
 					</figure>		
 				</div>

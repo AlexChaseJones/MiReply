@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import FriendCard from '../iterate/FriendCard.jsx';
+import FriendCard from '../iterate/FriendCardv2.jsx';
 
 export default class AllFriends extends Component {
 	constructor() {
@@ -66,7 +66,7 @@ export default class AllFriends extends Component {
 		return (
 			<div className="allFriends">
 				<form id="filter_friends">
-					<input type="text" name="filter_friends" ref="filter_friends" onInput={ this.filterFriends.bind(this) } placeholder="Filter friends..." />
+					<input type="text" name="filter_friends" ref="filter_friends" onInput={ this.filterFriends.bind(this) } placeholder="Search for a friend" />
 				</form>
 				{ this.state.filteredFriends }
 			</div>

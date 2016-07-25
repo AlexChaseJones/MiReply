@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
-import ConvoCard from '../iterate/ConvoCard.jsx';
+import ConvoCard from '../iterate/ConvoCardv2.jsx';
 
 export default class ClusterContainer extends TrackerReact(Component) {
 	constructor(props) {
@@ -13,13 +13,17 @@ export default class ClusterContainer extends TrackerReact(Component) {
 	}
 
 	componentWillMount() {
-		console.log(this.props.convos)
-		let convos = this.props.convos.map((convo) => {
-			return (<ConvoCard convo={convo} key={convo._id} />)
-		})
+		let convos = [];
+		for (var i = 0; i < this.props.convos.length; i++) {
+			j = i;
+			if (i > 8) {
+				j = i % 9;
+			}
+			convos.push(<ConvoCard color={"color-"+(j + 1)} convo={this.props.convos[i]} key={this.props.convos[i]._id} />)
+		}
+
 		console.log(convos)
 		if (convos.length == 0) {
-			let convos = [];
 			convos.push(<h1 key='1'>No convos</h1>)
 		}
 		this.setState({

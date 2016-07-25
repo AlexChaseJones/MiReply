@@ -91,7 +91,7 @@ export default class ClustersMain extends TrackerReact(Component) {
 						<div className="main_right">
 							<div className="home_feed_block box_shadow_right">
 								<div className="block_header">
-									<span>Clusters</span>
+									<span>Conversations</span>
 								</div>
 								<div className="main_content">
 									{ this.generateClusters() }

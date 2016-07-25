@@ -20,9 +20,7 @@ export default class TierContainer extends Component {
  				return (
  					<div>
 	 					<HiddenBox />
-	 					<HiddenBox />
-	 					<ActiveBox members={this.props.members} message={messages[0]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} />
-	 					<HiddenBox />
+	 					<ActiveBox members={this.props.members} message={messages[0]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} updatePosition={this.props.updatePosition} />
 	 					<HiddenBox />
  					</div>	
  				)
@@ -31,10 +29,8 @@ export default class TierContainer extends Component {
  				return (
  					<div>
 		 				<HiddenBox />
-		 				<HiddenBox />
-		 				<ActiveBox members={this.props.members} message={messages[0]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} />
+		 				<ActiveBox members={this.props.members} message={messages[0]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} updatePosition={this.props.updatePosition} />
 		 				<InactiveBox members={this.props.members} message={messages[1]} updatePosition={this.props.updatePosition}/>
-		 				<HiddenBox />
 	 				</div>
  				)
  			} else {
@@ -42,7 +38,7 @@ export default class TierContainer extends Component {
 	 				<div>
 		 				<HiddenBox />
 		 				<HiddenBox />
-		 				<ActiveBox members={this.props.members}  message={messages[0]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} />
+		 				<ActiveBox members={this.props.members}  message={messages[0]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} updatePosition={this.props.updatePosition} />
 		 				<InactiveBox members={this.props.members} message={messages[1]} updatePosition={this.props.updatePosition}/>
 		 				<InactiveBox members={this.props.members} message={messages[2]} updatePosition={this.props.updatePosition}/>
 	 				</div>
@@ -55,7 +51,7 @@ export default class TierContainer extends Component {
  					<div>
 		 				<HiddenBox />
 		 				<InactiveBox members={this.props.members} message={messages[0]} updatePosition={this.props.updatePosition}/>
-		 				<ActiveBox members={this.props.members}  message={messages[1]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} />
+		 				<ActiveBox members={this.props.members}  message={messages[1]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} updatePosition={this.props.updatePosition} />
 		 				<HiddenBox />
 		 				<HiddenBox />
 	 				</div>
@@ -63,11 +59,9 @@ export default class TierContainer extends Component {
  			} else {
 	 			return (
 	 				<div>
-		 				<HiddenBox />
 		 				<InactiveBox members={this.props.members} message={messages[0]} updatePosition={this.props.updatePosition}/>
-		 				<ActiveBox members={this.props.members} message={messages[1]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} />
+		 				<ActiveBox members={this.props.members} message={messages[1]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} updatePosition={this.props.updatePosition} />
 		 				<InactiveBox members={this.props.members} message={messages[2]}updatePosition={this.props.updatePosition}/>
-		 				<HiddenBox />
 	 				</div>
 	 			)
 	 		}
@@ -76,7 +70,7 @@ export default class TierContainer extends Component {
  				<div>
 	 				<InactiveBox members={this.props.members} message={messages[0]} updatePosition={this.props.updatePosition}/>
 	 				<InactiveBox members={this.props.members} message={messages[1]} updatePosition={this.props.updatePosition}/>
-	 				<ActiveBox members={this.props.members} message={messages[2]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} />
+	 				<ActiveBox members={this.props.members} message={messages[2]} handleSubmit={this.props.handleSubmit} addBookmark={this.props.addBookmark} updatePosition={this.props.updatePosition} />
 	 				<HiddenBox />
 	 				<HiddenBox />
  				</div>
@@ -85,11 +79,7 @@ export default class TierContainer extends Component {
  			if (messages.length == 1) {
  				return (
  					<div>
-	 					<HiddenBox />
-	 					<HiddenBox />
-	 					<InactiveBox members={this.props.members} message={messages[0]} updatePosition={this.props.updatePosition}/>
-	 					<HiddenBox />
-	 					<HiddenBox />
+	 					<ActiveBox members={this.props.members} message={messages[0]} updatePosition={this.props.updatePosition}updatePosition={this.props.updatePosition} />
  					</div>	
  				)
  			}
@@ -97,19 +87,17 @@ export default class TierContainer extends Component {
  				return (
  					<div>
 		 				<HiddenBox />
-		 				<InactiveBox members={this.props.members} message={messages[0]} updatePosition={this.props.updatePosition}/>
-		 				<InactiveBox members={this.props.members} message={messages[1]} updatePosition={this.props.updatePosition}/>
+		 				<ActiveBox members={this.props.members} message={messages[0]} updatePosition={this.props.updatePosition}updatePosition={this.props.updatePosition} />
+		 				<ActiveBox members={this.props.members} message={messages[1]} updatePosition={this.props.updatePosition}updatePosition={this.props.updatePosition} />
 		 				<HiddenBox />
 	 				</div>
  				)
  			} else {
 	 			return (
 	 				<div>
-		 				<HiddenBox />
-		 				<InactiveBox members={this.props.members}  message={messages[0]} updatePosition={this.props.updatePosition}/>
-		 				<InactiveBox members={this.props.members} message={messages[1]} updatePosition={this.props.updatePosition}/>
-		 				<InactiveBox members={this.props.members} message={messages[2]} updatePosition={this.props.updatePosition}/>
-		 				<HiddenBox />
+		 				<ActiveBox members={this.props.members}  message={messages[0]} updatePosition={this.props.updatePosition}updatePosition={this.props.updatePosition} />
+		 				<ActiveBox members={this.props.members} message={messages[1]} updatePosition={this.props.updatePosition}updatePosition={this.props.updatePosition} />
+		 				<ActiveBox members={this.props.members} message={messages[2]} updatePosition={this.props.updatePosition}updatePosition={this.props.updatePosition} />
 	 				</div>
 	 			)
 	 		}
@@ -129,7 +117,8 @@ export default class TierContainer extends Component {
 				transitionAppear={true}
 			>
 			<div id="tierTwo" className="tier">
-				<div className="tierContent">	
+				<div className="tierContent">
+					<h3>{this.props.tier.toString()}</h3>	
 					{this.generateMessages(this.props.messages)}
 				</div>
 			</div>

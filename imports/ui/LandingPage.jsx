@@ -16,13 +16,6 @@ export default class landingPage extends TrackerReact(Component) {
 	createUser(e) {
 		e.preventDefault();
 
-		console.log(this.refs.firstName.value)
-		console.log(this.refs.lastName.value)
-		console.log(this.refs.email.value)
-		console.log(this.refs.password.value)
-		console.log(this.refs.month.value)
-		console.log(this.refs.day.value)
-		console.log(this.refs.year.value)
 		let date = this.refs.month.value +'-' + this.refs.day.value + '-' + this.refs.year.value;
 		if (!moment(date).isValid()) {
 			Bert.alert('Not a valid birthday', 'danger', 'fixed-top', 'fa-frown-o');

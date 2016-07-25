@@ -20,19 +20,26 @@ export default class ActiveBox extends Component {
 	decideColor() {
 		let index = this.props.members.map((member) => { return member.id}).indexOf(this.props.message.sender.id)
 		switch(index) {
-			case 0 : return "message_header memberOne";
-			case 1 : return "message_header memberTwo";
-			case 2 : return "message_header memberThree";
-			case 3 : return "message_header memberFour";
+			case 0 : return "memberOne";
+			case 1 : return "memberTwo";
+			case 2 : return "memberThree";
+			case 3 : return "memberFour";
 		}
 	}
 
 	generateDots() {
-		let dots = [];
-		for (var i = 0; i<this.props.message.children; i++) {
-			dots.push(<img src="/images/icons/counter.png" key={i+5}/>)
+		if (this.props.message.children == 0) {
+			return
+		} else {
+			switch(this.props.message.children) {
+				case 1: return "One Reply";
+					break;
+				case 2: return "Two Replies";
+					break;
+				case 3: return "Three Replies";
+					break;
+			}
 		}
-		return dots;
 	}
 
 	generateName() {
@@ -54,24 +61,23 @@ export default class ActiveBox extends Component {
 				transitionLeaveTimeout={400}
 				transitionAppear={true}
 			>
-				<div className={this.decideSize()} >
+				<div className={this.decideSize() + ' ' + this.decideColor()} onClick={() => {this.props.updatePosition(this.props.message.location)} } >
 					<div className="message_content">
-						<div className={this.decideColor()}>
+						<div className="message_header">
 							<h2>{this.generateName()}</h2>
-							<h4>{moment((new Date(this.props.message.postedAt)).toDateString(), "ddd MMM DD YYYY").format("MM/DD/YY")}<br />{moment((new Date(this.props.message.postedAt))).format("h:mm a")}</h4>
+							<h4>{moment((new Date(this.props.message.postedAt)).toDateString(), "ddd MMM DD YYYY").format("MMM, Do")}<br />{moment((new Date(this.props.message.postedAt))).format("h:mm a")}</h4>
 						</div>
 						<div className="clearfix"></div>
 						<p>
 							{this.props.message.message}
 						</p>
 						<div className="new_message_container">
-							<img src="../../../images/icons/close.png" />
+							<h2>Reply</h2>
 							<form onSubmit={this.props.handleSubmit} className="new_message hidden">
 								<input type="hidden" value={this.props.message.location} name="location"/>
-								<div onClick={this.props.addBookmark} data-value={this.props.message.location} className="bookmark" name={this.props.message.sender.id}>Bookmark</div>
+								<div onClick={this.props.addBookmark} data-value={this.props.message.location} className="bookmark" name={this.props.message.sender.id}></div>
 							</form>
 						</div>
-						<img src="../../../images/icons/arrow-down.png" />
 						<div className="msg_count">
 							{this.generateDots()}
 						</div>

@@ -9,7 +9,7 @@ export default class FriendRequestDetail extends Component {
 		return (
 			<div className="activity_card">
 				<h3>
-					<span>{this.props.user.profile.firstName} {this.props.user.profile.lastName}</span> updated his status.
+					<span>{this.props.user.profile.firstName} {this.props.user.profile.lastName}</span>
 				</h3>
 				<img src={this.props.user.profile.image} />
 				<div className="activity_details">

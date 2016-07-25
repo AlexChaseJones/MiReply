@@ -24,59 +24,224 @@ html {
 	clear: both;
 }
 
-#content {
-	width: 100%;
-	padding-bottom: 65%;
+.all_content {
+	width: 1100px;
+	height: 620px;
+	position: relative;
+	overflow-y: none;
+	overflow-x: hidden;
+	margin: 20px auto;
+}
+
+.bookmark_holder {
+	position: absolute;
+	top: 130px;
+	left: -136px;
+	width: 200px;
+	z-index: 2;
+	transition: left .3s;
+}
+
+.bookmark_holder h2 {
+	position: absolute;
+	transform: rotate(90deg);
+	cursor: pointer;
+	right: -17px;
+	top: 150px;
+	background-color: rgba(110,107,103,1);
+	color: white;
+	padding: 15px 20px;
+}
+
+.show_bookmarks {
+	left: 0px;
+}
+
+.bookmark_holder ul {
+	height: 335px;
 	overflow-y: scroll;
+	float: left;
+	background-color: rgba(110,107,103,1);
+	border-top: 3px solid rgba(110,107,103,1);
+	border-bottom: 3px solid rgba(110,107,103,1);
+}
+
+.bookmark_holder ul li {
+	cursor: pointer;
+	width: 120px;
+	margin: 3px;
+	padding: 5px;
+	text-align: center;
+	color: white;
+}
+
+.bookmark_holder ul li:first-child {
+	margin-top: 0px;
+}
+
+.bookmark_holder ul li:last-child {
+	margin-bottom: 0px;
+}
+
+#convo_content {
+	width: 1100px;
+	height: 565px;
+	padding-bottom: 300px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	white-space: nowrap;
 	box-sizing: border-box;
-	box-shadow: inset 0px -50px 50px 10px black;
-	margin: 0 auto;
+	background-color: rgba(255,255,255,1)
+}
+
+.message_block_header {
+	text-align: left;
+	color: white;
+	font-size: 1.6em;
+	padding-top: 15px;
+	height: 39px; 
+	padding-left: 160px;
+	background-color: rgba(110,107,103,1);
+	position: relative;
+}
+
+.message_block_header img {
+	position: absolute;
+	top: 3px;
+	left: 40px;
+	width: 90px;
+	z-index: 1;
+	border: 4px solid rgba(110,107,103,1);
+	border-radius: 70px;
+	background-color: rgba(110,107,103,1);
+}
+
+.message_block_header ul {
+	float: right;
+	margin-top: -4px;
+}
+
+.message_block_header ul li {
+	display: inline-block;
+	border-left: 1px solid white;
+	padding: 0px 15px;
+	font-size: .5em;
+}
+
+.message_block_header ul li:first-child {
+	border-left: none;
 }
 
 .tier {
 	padding: 5px 0px;
-	background-color: rgba(237,237,237,.5);
-	border-bottom: 5px solid rgba(59,124,152,1);
-	box-shadow: inset 0px 5px 5px 1px rgba(0,0,0,.5);
 	text-align: center;
 	width: 100%;
 	margin:0 auto;
+	position: relative;
+}
+
+.tierContent  > h3 {
+	position: absolute;
+	top: 55px;
+	left: 20px;
+	float: left;
+	font-size: 2em;
+	color: rgba(216,216,216,1);
+
+}
+
+.default_message {
+	position: relative;
+	overflow: hidden;
+	padding: 40px;
+	color: white;
+	white-space: normal;
+	width: 730px;
+	height: 130px;
+	background-color: rgba(110,107,103,1);
+	margin: 25px auto;
+}
+
+.default_message form {
+	width: 100%;
+}
+
+.default_message textarea {
+	width: 730px;
+}
+
+.convo_info {
+	height: 300px;
+	overflow: scroll;
+}
+
+.convo_info h3{
+	margin: 20px auto;
+	padding: 15px;
+	text-align: center;
+	cursor: pointer;
+	width: 100px;
+	background-color: rgba(251,171,24,1)
+}
+
+.convo_info h4:first-child {
+	margin-top: 40px;
+}
+
+.convo_info h4 {
+	margin: 20px 0px 10px;
+	font-size: 1.3em;
+	color: rgba(251,171,24,1);
+}
+
+.convo_info p {
+	line-height: 15px;
+	font-size: .8em;
+	padding-left: 40px;
+}
+
+.default_message h1 {
+	margin-bottom: 30px;
+	font-size: 1.7em;
+	text-align: left;
+}
+
+.default_message h2 {
+	font-size: .8em;
+	text-align: left;
+	margin: 0 auto;
 }
 
 .hiddenBox, .inactiveBox, .activeBox {
+	white-space: normal;
 	position: relative;
 	margin: 0px 5px;
-	border-radius: 10px;
 	background-color: rgba(0,0,0,.7);
 	display: inline-block;
 	vertical-align: top;
 }
 
 .hiddenBox, .inactiveBox {
-	height: 175px;
+	height: 80px;
 	width: 150px;
 }
 
 .activeBox {
-	height: 175px;
-	cursor: default;
-}
-
-.border_bottom_flat {
-	border-bottom-right-radius: 0px;
-	border-bottom-left-radius: 0px;
+	height: 145px;
+	position: relative;
+	cursor: pointer;
 }
 
 .largeBox {
-	width: 300px;
+	width: 500px;
 }
 
 .mediumBox {
-	width: 240px;
+	width: 400px;
 }
 
 .smallBox {
-	width: 190px;
+	width: 300px;
 }
 
 .specialBox {
@@ -95,20 +260,20 @@ html {
 	visibility: hidden;
 }
 
-.memberOne h2, .memberOne h4, .bookmarks .memberOne {
-	color: rgba(87, 240, 125, .9);
+.memberOne {
+	background-color: rgba(221,94,39,1);
 }
 
-.memberTwo h2, .memberTwo h4, .bookmarks .memberTwo {
-	color: rgba(87, 240, 240, .9);
+.memberTwo {
+	background-color: rgba(101,137,153,1);
 }
 
-.memberThree h2, .memberThree h4, .bookmarks .memberThree {
-	color: rgba(240, 143, 87, .9);
+.memberThree {
+	background-color: rgba(108,198,186,1);
 }
 
-.memberFour h2, .memberFour h4, .bookmarks .memberFour {
-	color: rgba(187, 87, 240, .9);
+.memberFour {
+	background-color: rgba(251,171,24,1);
 }
 
 .activeBox .message_header {
@@ -116,76 +281,71 @@ html {
 }
 .activeBox .message_header h2{
 	float: left;
-	font-size: .9em;
+	font-size: 1.2em;
+	color: white;
 	margin-top: 3px;
 }
 
 .activeBox .message_header h4{
 	float: right;
 	font-size: .7em;
+	color: white;
+	margin: -8px -15px 0px 0px;
 }
 
 .activeBox .message_content > p {
 	font-size: .8em;
 	line-height: 14px;
 	text-align: left;
+	padding-bottom: 20px;
 	color: white;
-	height: 105px;
+	height: 65px;
 	overflow-y: scroll;
 }
 
-.activeBox .new_message_container img {
-	width: 16px;
-	display: inline-block;
-	float: left;
-	opacity: .8;
-	position: relative;
-	left: -21px;
-	top: -3px;
-	transform: rotate(45deg);
-	transition: transform .2s;
-	cursor: pointer;
-	padding:3px;
+.activeBox .new_message_container h2 {
+	text-align: left;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	background-color: rgba(110,107,103,1);
+	padding: 10px;
+	color: white;
+	font-size: .8em;
 }
 
 .new_message {
 	position: absolute;
-	border-radius: 8px;
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
-	bottom: -67px;
+	bottom: 0px;
 	left: 0px;
-	padding: 5px;
-	background-color: rgba(0,0,0,.7);
+	background-color: rgba(99,96,92,1);
 	z-index: 1;
-	box-shadow: 0px 0px 4px 1px inset rgba(0,0,0,.5);
 }
 
 .hidden {
 	visibility: hidden;
 }
 .new_message textarea {
-	border-radius: 8px;
-	box-shadow: inset 0px 2px 4px 1px rgba(0,0,0,.5);
+	resize: none;
 	border: none;
-	max-height: 100px;
-	padding: 5px;
+	height: 27px;
+	font-size: .9em;
+	padding-top: 5px;
+	vertical-align: bottom;
+	margin: 3px;
 	background-color: rgba(255,255,255,.95);
 }
 
 .largeBox .new_message textarea {
- 	min-width: 280px;
-	max-width: 280px;
+ 	width: 380px;
 }
 
 .mediumBox .new_message textarea {
-	min-width: 220px;
-	max-width: 220px;
+	width: 280px;
 }
 
 .smallBox .new_message textarea {
-	min-width: 170px;
-	max-width: 170px;
+	width: 180px;
 }
 
 textarea:focus {
@@ -193,24 +353,23 @@ textarea:focus {
 }
 
 .new_message button[name="messenger"] {
-	width: 60%;
+	width: 70px;
+	padding: 11.5px;
 	border: none;
-	background-color: rgba(255,255,255,.75);
-	border-radius: 4px;
-	height: 18px;
-	font-size: .75em;
+	border-radius: none;
+	background-color: rgba(0,0,0,0);
+	color: white;
+	font-size: .9em;
 }
 
 .new_message .bookmark {
-	width: 35%;
-	height: 14px;
-	margin-left: 5px;
+	width: 40px;
+	height: 40px;
+	background-image: url('/images/icons/bookmark-v2.png');
 	font-size: .75em;
 	border: none;
 	float: right;
-	padding-top: 4px;
 	background-color: rgba(255,255,255,.75);
-	border-radius: 4px;
 }
 
 .new_message .bookmark:hover {
@@ -219,35 +378,22 @@ textarea:focus {
 }
 
 .new_message button:hover {
-	background-color: rgba(60,180,57,1);
+	background-color: rgba(255,255,255,.1);
 	color: white;
 }
 
-.activeBox .rotate_45 {
-	transform: rotate(0deg) !important;
-	transition: transform .2s;
-}
-
-.activeBox .message_content > img  {
-	width: 20px;
-	position: absolute;
-	left: 46%;
-	opacity: .8;
-}
-
 .activeBox .msg_count {
-	position: relative;
-	left: 15px;
-}
-.activeBox .msg_count img {
-	width: 12px;
-	padding: 5px 1px;
-	opacity: .8;
-	float: right;
+	position: absolute;
+	color: white;
+	font-size: .65em;
+	bottom: 6px;
+	right: 6px;
 }
 
 .inactiveBox {
+	margin-top: 30px;
 	cursor: pointer;
+	color: white;
 }
 .inactiveBox .message_content {
 	padding: 10px;
@@ -256,25 +402,20 @@ textarea:focus {
 .inactiveBox h2 {
 	font-size: .9em;
 	margin-top: 10px;
+	text-align: left;
 
 }
 
 .inactiveBox h4 {
+	text-align: left;
 	font-size: .8em;
-	margin-top: 30px;
+	margin-top: 10px;
 }
 
 .inactiveBox .msg_count {
-	position: relative;
-	float: right;
-	top: 55px;
-	right: 10px;
-}
-
-.inactiveBox .msg_count img {
-	display: inline-block;
-	opacity: .8;
-	width: 12px;
+	font-size: .65em;
+	text-align: left;
+	padding-left: 10px;
 }
 
 .inactiveBox .hidden_message {
@@ -282,7 +423,7 @@ textarea:focus {
 	left: 10px;
 	top: 20px;
 	width: 130px;
-	height:  125px;
+	height:  80px;
 	overflow-y: scroll;
 }
 
@@ -299,10 +440,6 @@ textarea:focus {
 
 .show_hidden .message_content {
 	visibility: hidden !important;
-}
-
-.header_content {
-	height: 135px;
 }
 
 .header_content h1 {
@@ -344,10 +481,6 @@ textarea:focus {
 	color: rgba(255,255,255,.2);
 	margin-top: 35px;
 	font-weight: 700;
-}
-
-.info_content ul  {
-
 }
 
 .info_content ul li {

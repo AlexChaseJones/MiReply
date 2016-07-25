@@ -9,7 +9,7 @@ export default class Bookmarks extends Component {
 	renderBookmarks() {
 		debugger;
 		if (this.props.messages == 'none') {
-			return <h3>No Saved Bookmarks</h3>
+			return <h4>No Saved Bookmarks</h4>
 		}
 		let user = this.props.members.find((member) => {
 			return (member.id == Meteor.userId()) 
@@ -33,9 +33,9 @@ export default class Bookmarks extends Component {
 			})
 
 			return (
-				 <ul className="bookmarks">
+				<div>
 					{bookmarks}
-				 </ul>
+				</div>
 			)
 		} else {
 			return <h3>No Saved Bookmarks</h3>
@@ -62,12 +62,9 @@ export default class Bookmarks extends Component {
 
 	render() {
 		return (
-			<div className="activeBox specialBox">
-				<div className="info_content">
-					<h2>Bookmarks</h2>
-					 { this.renderBookmarks() }
-				</div>
-			</div>
+			<ul className="bookmarks">
+				{ this.renderBookmarks() }
+			</ul>
 		)
 	}
 }

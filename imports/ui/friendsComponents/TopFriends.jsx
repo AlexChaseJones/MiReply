@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
-import TopFriendCard from '../iterate/TopFriendCard.jsx';
+import TopFriendCard from '../iterate/TopFriendCardv2.jsx';
 
 export default class TopFriends extends TrackerReact(Component) {
 	constructor() {
@@ -27,11 +27,6 @@ export default class TopFriends extends TrackerReact(Component) {
 	render() {
 		return (
 			<div className="top_friends">
-				<div className="top_friends_header">
-					<img src="../../../images/icons/star.png" />
-					<h2>Top Friends - {this.props.friendCount}/9</h2>
-				</div>
-				<div className="line_seperator_lg"></div>
 					{ this.renderTopFriends() }
 			</div>
 		)

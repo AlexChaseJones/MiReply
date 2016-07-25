@@ -35,6 +35,12 @@ export default class ProfileAside extends Component {
 		})
 	}
 
+	logout() {
+		Meteor.logout((err,data) => {
+			FlowRouter.go('/')
+		});
+	}
+
 	render() {
 		return (
 			<div className="aside_block box_shadow_right">
@@ -46,9 +52,9 @@ export default class ProfileAside extends Component {
 					<div className="insight_section">
 						<img src="/images/icons/summary.png" />
 						<h3>Summary</h3>
-						<p>
+						<pre>
 							{this.props.user.profile.summary}
-						</p>
+						</pre>
 						<div className="line_seperator"></div>
 					</div>
 
@@ -68,6 +74,7 @@ export default class ProfileAside extends Component {
 							{ this.renderFriends() }
 						</ul>
 						<div className="line_seperator"></div>
+						<button onClick={this.logout}>Logout</button>
 					</div>
 
 				</div>

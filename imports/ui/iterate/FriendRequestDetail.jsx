@@ -25,8 +25,8 @@ export default class FriendRequestDetail extends Component {
 				<p >
 					<span onClick={this.handleHref}>{this.props.user.profile.firstName}  {this.props.user.profile.lastName}</span> wants to be your friend.
 				</p>
-				<img onClick={this.confimFriend} src="/images/icons/add-friend.png" />
-				<img src="/images/icons/remove.png" />
+				<img onClick={this.confimFriend} src="/images/icons/check-v2.png" />
+				<img src="/images/icons/close-v2.png" />
 			</div>
 		)
 	}

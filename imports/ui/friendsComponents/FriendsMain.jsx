@@ -62,20 +62,30 @@ export default class FriendsMain extends TrackerReact(Component) {
 			return (<h2>No Friends!</h2>)
 		} else {
 			return (
-				<div>
-					<TopFriends 
-						friends={this.state.friends} 
-						friendCount={this.state.friendCount} 
-						updateCount={this.updateCount}
-					/>
-
-					<div className="line_seperator_lg"></div>
-
-					<AllFriends 
-						friends={this.state.friends} 
-						updateCount={this.updateCount}
-					/>
+			<div>
+				<div className="home_feed_block box_shadow_right">
+					<div className="block_header">
+						<span>Top Friends</span>
+					</div>
+					<div className="main_content">
+						<TopFriends 
+							friends={this.state.friends} 
+							updateCount={this.updateCount}
+						/>
+					</div>
 				</div>
+				<div className="home_feed_block box_shadow_right">
+					<div className="block_header">
+						<span>All Friends</span>
+					</div>
+					<div className="main_content">	
+						<AllFriends 
+							friends={this.state.friends} 
+							updateCount={this.updateCount}
+						/>
+					</div>
+				</div>
+			</div>
 			)
 		}
 	}
@@ -120,14 +130,7 @@ export default class FriendsMain extends TrackerReact(Component) {
 						</div>
 
 						<div className="main_right">
-							<div className="home_feed_block box_shadow_right">
-								<div className="block_header">
-									<span>Friends</span>
-								</div>
-								<div className="main_content">
 									{ this.generateFriends() }
-								</div>
-							</div>
 						</div>		
 					</div>
 				</div>

@@ -302,9 +302,32 @@ export default class ConversationMain extends TrackerReact(Component) {
 		}
 	}
 
+	showDefault() {
+		if (this.state.messages.length == 0){
+			return (	
+				<div className="default_message">
+					<h1>Welcome to your new Conversation!</h1>
+					<h2>Send your first message below to get started, or click more info for a description of MiReply's chat features!</h2>
+					<form onSubmit={this.handleFirstMessage} className="new_message">
+						<textarea type="text" className="text_area" name="message"/><button type="submit" name="messenger">Reply</button>
+					</form>
+					<div className="convo_info">
+						<h3>More Info</h3>
+						<h4>How MiReply Works</h4>
+						<p>Unlike traditional messaging, MiReply organizes messages by their context as opposed to the time they were written.</p>
+						<h4>Navigating Messages</h4>
+						<p>To navigate through your conversation, simply click on a message and MiReply will give that message focus and show you the replies that have been made to it.<br />As you traverse down, the path that you took to get to where you are will be above. the smaller messages on the left and/or right are other replies that were made to the same message.</p>
+						<h4>Bookmarking</h4>
+						<p>To bookmark a message and save its location for future access, click the flag icon next the the reply button. This will save this messages location in the bookmarks section.</p>
+						<h4>Restrictions</h4>
+						<p>MiReply is very flexible and allows for dynamic conversations. To limit Clutter and more directional communication, repling to a message more than once is prohibited. </p>
+					</div>
+				</div>
+			)
+		}
+	}
+
 	render() {
-		document.body.style.backgroundImage = 'url("/images/backgrounds/ice.jpg")';
-		document.body.style.backgroundColor = 'black';
 		if (this.state.length == 0 || !Meteor.user()) {
 			return(<div className="bigLoader">Building Conversation...</div>)
 		} else {
@@ -322,7 +345,7 @@ export default class ConversationMain extends TrackerReact(Component) {
 								<img className="nav_img" src="../../../images/icons/earth.png" /> 
 								<span>HOME</span>
 							</li></a>
-							<a href="/clustersPage.html"><li>
+							<a href="/convos"><li>
 								<img className="nav_img" src="../../../images/icons/cluster.png" /> 
 								<span>CLUSTERS</span>
 							</li></a>
@@ -335,42 +358,27 @@ export default class ConversationMain extends TrackerReact(Component) {
 					</div>
 				</div>
 			</div>
-
-			<div id="content">
-				<div id="tierZero" className="tier">
-					<div className="tierContent">
-
-						{ this.bookmarks(this.state.position, this.state.members ) }
-
-						<div className="activeBox largeBox">
-							<div className="message_content">
-								<div className="header_content">
-									<h1>{this.state.convo.name}</h1>
-									<img src={"/images/collab-buttons/"+this.state.convo.image+".png"} />
-									<ul>
-										{ this.renderMembersList(this.state.convo) }
-									</ul>
-								</div>
-								<div className="new_message_container">
-									<img src="../../../images/icons/close.png" />
-									<form onSubmit={this.handleFirstMessage} className="new_message hidden">
-									</form>
-								</div>
-								<img src="../../../images/icons/arrow-down.png" />
-								<div className="msg_count">
-								</div>
-							</div>
-						</div>
-
-						{ this.newMessages(this.state.newMessages) }
-
-					</div>
+			<div className="all_content">
+				<div className="message_block_header">
+					<img src={"/images/collab-buttons-v2/"+this.state.convo.image+".png"} />
+					<span>{this.state.convo.name}</span>
+					<ul>
+						{ this.renderMembersList(this.state.convo) }
+					</ul>
 				</div>
-
+				<div className="bookmark_holder">
+					<h2>Bookmarks</h2>
+					{this.bookmarks(this.state.position, this.state.members ) }
+				</div>
+				<div id="convo_content">
+				{this.showDefault()}
 				{ this.buildTeirs(this.state.position, this.state.members) }
-
+				</div>
+				</div>
+				<div className="message_aside">
+				{/* this.newMessages(this.state.newMessages) */}
+				</div>
 			</div>
-		</div>
 			)
 		}
 	}

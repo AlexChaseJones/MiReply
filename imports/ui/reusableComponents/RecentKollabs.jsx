@@ -9,39 +9,39 @@ export default class RecentKollabs extends Component {
 		return (
 			<div className="aside_block box_shadow_left">
 				<div className="block_header">
-					<span>Recent Clusters</span>
+					<p>Recent Convos</p>
 				</div>
 				<div className="rc_content">
 
-					<div className="recent_cluster">
-						<img src="../../../images/collab-buttons/14.png" />
+					<div className="recent_cluster color-3">
+						<img src="../../../images/collab-buttons-v2/14.png" />
 						<br /> 
-						<span>Billing</span>
+						<p>Billing</p>
 					</div>
-					<div className="recent_cluster">
-						<img src="../../../images/collab-buttons/34.png" />
+					<div className="recent_cluster color-6">
+						<img src="../../../images/collab-buttons-v2/34.png" />
 						<br /> 
-						<span>Engineers</span>
+						<p>Engineers</p>
 					</div>
-					<div className="recent_cluster">
-						<img src="../../../images/collab-buttons/25.png" />
+					<div className="recent_cluster color-5">
+						<img src="../../../images/collab-buttons-v2/25.png" />
 						<br /> 
-						<span>Matthew H.</span>
+						<p>Matthew H.</p>
 					</div>
-					<div className="recent_cluster">
-						<img src="../../../images/collab-buttons/41.png" />
+					<div className="recent_cluster color-1">
+						<img src="../../../images/collab-buttons-v2/41.png" />
 						<br /> 
-						<span>Meteor Devs</span>
+						<p>Meteor Devs</p>
 					</div>
-					<div className="recent_cluster">
-						<img src="../../../images/collab-buttons/17.png" />
+					<div className="recent_cluster color-2">
+						<img src="../../../images/collab-buttons-v2/17.png" />
 						<br /> 
-						<span>James R.</span>
+						<p>James R.</p>
 					</div>
-					<div className="recent_cluster">
-						<img src="../../../images/collab-buttons/28.png" />
+					<div className="recent_cluster color-4">
+						<img src="../../../images/collab-buttons-v2/28.png" />
 						<br /> 
-						<span>Office Buds</span>
+						<p>Office Buds</p>
 					</div>
 
 				</div>

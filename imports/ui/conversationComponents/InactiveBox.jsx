@@ -8,28 +8,35 @@ export default class InactiveBox extends Component {
 	decideColor() {
 		let index = this.props.members.map((member) => { return member.id}).indexOf(this.props.message.sender.id)
 		switch(index) {
-			case 0 : return "message_header memberOne";
-			case 1 : return "message_header memberTwo";
-			case 2 : return "message_header memberThree";
-			case 3 : return "message_header memberFour";
+			case 0 : return "memberOne";
+			case 1 : return "memberTwo";
+			case 2 : return "memberThree";
+			case 3 : return "memberFour";
 		}
 	}
 
 	generateDots() {
-		let dots = [];
-		for (var i = 0; i<this.props.message.children; i++) {
-			dots.push(<img src="/images/icons/counter.png" key={i+5}/>)
+		if (this.props.message.children == 0) {
+			return
+		} else {
+			switch(this.props.message.children) {
+				case 1: return "One Reply";
+					break;
+				case 2: return "Two Replies";
+					break;
+				case 3: return "Three Replies";
+					break;
+			}
 		}
-		return dots;
 	}
 
 	render() {
 		return (
-			<div className="inactiveBox" onClick={() => {this.props.updatePosition(this.props.message.location)} }>
+			<div className={"inactiveBox " + this.decideColor()} onClick={() => {this.props.updatePosition(this.props.message.location)} }>
 				<div className="message_content">
-					<div className={this.decideColor()}>
+					<div className="message_header">
 						<h2>{this.props.message.sender.firstName} {this.props.message.sender.lastName}</h2>
-						<h4>{moment((new Date(this.props.message.postedAt)).toDateString(), "ddd MMM DD YYYY").format("MM/DD/YY")}<br />{moment((new Date(this.props.message.postedAt))).format("h:mm a")}</h4>
+						<h4>{moment((new Date(this.props.message.postedAt)).toDateString(), "ddd MMM DD YYYY").format("MMM, Do")} {moment((new Date(this.props.message.postedAt))).format("h:mm a")}</h4>
 					</div>
 					<div className="clearfix"></div>
 				</div>
