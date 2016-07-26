@@ -25,10 +25,21 @@ export default class TopFriends extends TrackerReact(Component) {
 	}
 
 	render() {
-		return (
-			<div className="top_friends">
-					{ this.renderTopFriends() }
-			</div>
-		)
+		if (this.props.friends == 0) {
+			return(
+				<div className="friends_welcome">
+					<h1>Welcome to your friends list!</h1>
+					<p>This is where all of your friends will show up as soon as you start adding them.</p>
+					<p>MiReply currently exists on a closed network, this means that to find others, you have to find them by their personal URL.</p>
+					<p>To set your own personal URL, head over to the <a href="/edit">edit profile</a> section and at the bottom right you can update your personal domain. Share your newly created link to connect with friends!</p>
+				</div>
+			)
+		} else {
+			return (
+				<div className="top_friends">
+						{ this.renderTopFriends() }
+				</div>
+			)
+		}
 	}
 }

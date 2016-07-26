@@ -5,6 +5,10 @@ export default class FriendRequestDetail extends Component {
 		super();
 	}
 
+	getTime() {
+
+	}
+
 	render() {
 		return (
 			<div className="activity_card">
@@ -15,7 +19,7 @@ export default class FriendRequestDetail extends Component {
 				<div className="activity_details">
 					{this.props.post.post}
 				</div>
-				<h4>32 minutes ago</h4>
+				<h4 data-livestamp={this.props.post.postedAt}></h4>
 				<div className="clearfix"></div>
 			</div>
 		)

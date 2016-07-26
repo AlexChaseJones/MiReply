@@ -35,6 +35,7 @@ export default class ClustersMain extends TrackerReact(Component) {
 			});
 			confirmedConvos = confirmedConvos.filter((cf) => {return cf != undefined});
 			convoData = Kollabs.find({_id : {$in: confirmedConvos }}).fetch();
+			
 			this.setState({
 				convos: convoData
 			})
@@ -45,7 +46,13 @@ export default class ClustersMain extends TrackerReact(Component) {
 		if (this.state.convos == 'banana') {
 			return(<div className="loader">Loading...</div>)
 		} else if (this.state.convos.length == 0) {
-			return (<h2>No Convos!</h2>)
+			return (
+				<div className="friends_welcome">
+					<h1>Welcome to your Conversations list!</h1>
+					<p>This is where your conversations that you create will show.</p>
+					<p>To start a new conversation, visit your <a href="/friends">friends list</a> and click start a new conversation!</p>
+				</div>
+			)
 		} else {
 			return (<ClusterContainer convos={this.state.convos} />)
 		}

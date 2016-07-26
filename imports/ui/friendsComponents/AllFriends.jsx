@@ -63,13 +63,21 @@ export default class AllFriends extends Component {
 	}
 
 	render() {
-		return (
-			<div className="allFriends">
-				<form id="filter_friends">
-					<input type="text" name="filter_friends" ref="filter_friends" onInput={ this.filterFriends.bind(this) } placeholder="Search for a friend" />
-				</form>
-				{ this.state.filteredFriends }
-			</div>
-		)
+		if (this.props.friends == 0) {
+			return(
+				<div className="friends_welcome">
+					<h1>No Friends to show!</h1>
+				</div>
+			)
+		} else {
+			return (
+				<div className="allFriends">
+					<form id="filter_friends">
+						<input type="text" name="filter_friends" ref="filter_friends" onInput={ this.filterFriends.bind(this) } placeholder="Search for a friend" />
+					</form>
+					{ this.state.filteredFriends }
+				</div>
+			)
+		}
 	}
 }

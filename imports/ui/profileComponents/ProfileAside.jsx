@@ -18,7 +18,7 @@ export default class ProfileAside extends Component {
 		})
 
 		if (topFriends.length == 0) {
-			topFriends.push(<li key='1'> No top Friends! </li>)
+			topFriends.push(<h2 key='1' className="default_aside"> No top friends </h2>)
 		}
 		return topFriends;
 	}
@@ -27,7 +27,7 @@ export default class ProfileAside extends Component {
 		publicCollabs = this.props.user.profile.collabs.filter(collab => collab.public);
 
 		if (publicCollabs.length == 0) {
-			return (<li key='1'> No Public Collabs! </li>)
+			return (<h2 key='1' className="default_aside"> No public convos </h2>)
 		}
 
 		return publicCollabs.map((collab) => {
@@ -66,7 +66,7 @@ export default class ProfileAside extends Component {
 
 					<div className="insight_section">
 						<img src="/images/icons/public-clusters.png" />
-						<h3>Public Clusters</h3>
+						<h3>Public Conversations</h3>
 						<ul className="public_clusters">
 							{ this.renderCollabs() }	
 						</ul>

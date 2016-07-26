@@ -39,7 +39,15 @@ export default class ProfileActivity extends TrackerReact(Component) {
 			return (<ActivityPost user={this.props.user} post={post} key={post._id} />)
 		})
 
-		return posts.reverse().slice(0,10);
+		if (posts.length == 0) {
+			return (
+				<div className="friends_welcome">
+					<h1>You haven't posted anything on your board!</h1>
+					<p>Your board is viewable by anyone that visits your profile.</p>
+					<p>Boards hold up to ten messages, when you reach your eleventh post, the last board message will be removed and deleted forever. (and ever).</p>
+				</div>
+			)
+		} else return posts.reverse().slice(0,10);
 	}
 
 	render() {

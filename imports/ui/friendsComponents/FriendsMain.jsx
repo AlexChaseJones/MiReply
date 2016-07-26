@@ -58,8 +58,6 @@ export default class FriendsMain extends TrackerReact(Component) {
 	generateFriends() {
 		if (this.state.friends == "banana") {
 			return(<div className="loader">Loading...</div>)
-		} else if (this.state.friends == 0) {
-			return (<h2>No Friends!</h2>)
 		} else {
 			return (
 			<div>

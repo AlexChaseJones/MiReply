@@ -32,6 +32,27 @@ export default class Requests extends Component {
 		})
 	}
 
+	default() {
+		let convoRequests = Meteor.user().profile.collabs.map((convo) => {
+			if (!convo.set) return convo.id
+		})
+		convoRequests = convoRequests.filter((fr) => {return fr != undefined})
+		convoRequests = Kollabs.find( {_id: { $in: convoRequests } }).fetch()
+		let friendRequests = Meteor.user().profile.friends.map((friend) => {
+			if (!friend.set) return friend.id
+		})
+		friendRequests = friendRequests.filter((fr) => {return fr != undefined})
+		friendRequests = Meteor.users.find({_id: {$in: friendRequests}}).fetch()
+
+		if (convoRequests.length == 0 && friendRequests.length == 0) {
+			return (
+				<div className="default_requests">
+					<h1>No Requests :)</h1>
+				</div>
+			)
+		}
+	}
+
 	render() {
 		return (
 			<div className="aside_block box_shadow_left">
@@ -41,6 +62,7 @@ export default class Requests extends Component {
 				<div className="rq_content">
 					{ this.getFriendRequests() }
 					{ this.getConvoRequests() }
+					{ this.default() }
 				</div>
 			</div>
 		)
