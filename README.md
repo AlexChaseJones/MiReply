@@ -47,3 +47,8 @@ This project is licensed under the MIT License
 * Michael Stern of Rutgers for introducing me to Meteor
 * Pavan Katepalli of Trilogy for his continuous encouragement
 * Windows 10 for pioneering modern flat design
+
+
+## Screen Captures
+<br>
+<img src="https://github.com/AlexChaseJones/MiReply/blob/master/public/images/examples/conversation_example.png"/>
