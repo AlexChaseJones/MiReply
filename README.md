@@ -12,21 +12,21 @@ This application is written in ES6 and uses babel to transpile it into a compati
 
 
 ## Built With
-*ES6
-*Meteor
-*Galaxy for deployment
-*Multiple AtmosphereJS libraries
-*TrackerReact for data reactiveness
-*React
-*React CSS Transitions (Library)
-*jQuery
-*MongoDB
-*MLabs
-*Amazon Web Services
-*FlowRouter for routing
-*CSS3
-*Stylus
-*Underscore
+* ES6
+* Meteor
+* Galaxy for deployment
+* Multiple AtmosphereJS libraries
+* TrackerReact for data reactiveness
+* React
+* React CSS Transitions (Library)
+* jQuery
+* MongoDB
+* MLabs
+* Amazon Web Services
+* FlowRouter for routing
+* CSS3
+* Stylus
+* Underscore
 
 
 ## Contributing
