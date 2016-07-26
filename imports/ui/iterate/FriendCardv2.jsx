@@ -5,6 +5,7 @@ export default class FriendCardv2 extends Component {
 		super();
 		this.addToTopFriends = this.addToTopFriends.bind(this);
 		this.handleHref = this.handleHref.bind(this);
+		this.handleCreateHref = this.handleCreateHref.bind(this);
 	}
 
 	addToTopFriends() {
@@ -30,8 +31,8 @@ export default class FriendCardv2 extends Component {
 						<img onClick={this.handleHref} src={this.props.user.profile.image} />
 						<h2 onClick={this.handleHref}>{this.props.user.profile.firstName} <br/>{this.props.user.profile.lastName}</h2>
 						<div className="options">
-							<div className="reply_block_sm">
-								<img onClick={this.handleCreateHref} src="/images/icons/reply-v2.png" />
+							<div className="reply_block_sm" onClick={this.handleCreateHref} >
+								<img src="/images/icons/reply-v2.png" />
 								<h4 onClick={this.handleCreateHref}>Start a new Convo</h4>
 							</div>
 							<div className="edit_block_sm">

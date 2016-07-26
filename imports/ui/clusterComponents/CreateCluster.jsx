@@ -198,7 +198,7 @@ export default class CreateCluster extends TrackerReact(Component) {
 								</li></a>
 								<a href="/convos"><li>
 									<img className="nav_img" src="../../../images/icons/cluster.png" /> 
-									<span>CLUSTERS</span>
+									<span>CONVERSATIONS</span>
 								</li></a>
 								<a href="/friends"><li>
 									<img className="nav_img" src="../../../images/icons/earth.png" /> 
@@ -213,11 +213,12 @@ export default class CreateCluster extends TrackerReact(Component) {
 					<div className="container">
 						<div className="main_center new_cluster_block">
 							<div className="center_block box_shadow_right">
-								<div className="block_header_sm"></div>
-								<h1>New Kollab</h1>
+								<div className="block_header">
+									<h2>New Conversation</h2>
+								</div>
 								<div className="line_seperator_md"></div>
 								<form id="new_cluster" onSubmit={this.handleSubmit}>
-									<label htmlFor="kollabName">Kollab Name</label>
+									<label htmlFor="kollabName">Title</label>
 									<input type="text" name="kollabName" ref="kollabName" pattern=".{3,15}" required title="3 to 15 characters"/><br />
 									<label htmlFor="memberOne">Members</label>
 									<input type="text" className="memberOne" className="memberOne" ref="memberOne" list="friends" required placeholder="One member required" defaultValue={this.queryUser()} /><br />
@@ -226,7 +227,7 @@ export default class CreateCluster extends TrackerReact(Component) {
 									<div className="clearfix"></div>
 									<div className="line_seperator_md"></div>
 									<div className="icons">
-										<h2>Choose an Icon for your Kollab! (required)</h2>
+										<h2>Choose an Icon for your Conversation! (required)</h2>
 										<ul>
 										    { this.showIcons() }
 										</ul>

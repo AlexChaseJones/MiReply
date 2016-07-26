@@ -35,6 +35,12 @@ export default class ProfileAside extends Component {
 		})
 	}
 
+	showLogout() {
+		if (Meteor.userId() == this.props.user._id) {
+			return (<button onClick={this.logout} className="logout_button">Logout</button>)
+		}
+	}
+
 	logout() {
 		Meteor.logout((err,data) => {
 			FlowRouter.go('/')
@@ -74,7 +80,7 @@ export default class ProfileAside extends Component {
 							{ this.renderFriends() }
 						</ul>
 						<div className="line_seperator"></div>
-						<button onClick={this.logout}>Logout</button>
+						{this.showLogout()}
 					</div>
 
 				</div>

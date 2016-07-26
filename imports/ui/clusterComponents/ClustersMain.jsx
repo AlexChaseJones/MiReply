@@ -69,7 +69,7 @@ export default class ClustersMain extends TrackerReact(Component) {
 								</li></a>
 								<a href="/convos"><li>
 									<img className="nav_img" src="../../../images/icons/cluster.png" /> 
-									<span>CLUSTERS</span>
+									<span>CONVERSATIONS</span>
 								</li></a>
 								<a href="/friends"><li>
 									<img className="nav_img" src="../../../images/icons/earth.png" /> 
