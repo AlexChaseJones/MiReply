@@ -51,4 +51,13 @@ This project is licensed under the MIT License
 
 ## Screen Captures
 <br>
+### Profile View
+<img src="https://github.com/AlexChaseJones/MiReply/blob/master/public/images/examples/profile_example.png"/>
+<br>
+## Friends View
+<img src="https://github.com/AlexChaseJones/MiReply/blob/master/public/images/examples/friends_example.png" />
+<br>
+## Conversations View
 <img src="https://github.com/AlexChaseJones/MiReply/blob/master/public/images/examples/conversation_example.png"/>
+## Message View
+<img src="https://github.com/AlexChaseJones/MiReply/blob/master/public/images/examples/messaging_example.png" />
