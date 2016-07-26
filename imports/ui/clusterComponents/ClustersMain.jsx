@@ -35,7 +35,7 @@ export default class ClustersMain extends TrackerReact(Component) {
 			});
 			confirmedConvos = confirmedConvos.filter((cf) => {return cf != undefined});
 			convoData = Kollabs.find({_id : {$in: confirmedConvos }}).fetch();
-			
+
 			this.setState({
 				convos: convoData
 			})
@@ -66,7 +66,7 @@ export default class ClustersMain extends TrackerReact(Component) {
 					<div className="container">
 						<div className="logo">
 							<img className="nav_img_md" src="../../../images/icons/cluster.png" />		
-							<span>Cluster</span>
+							<span>MiReply</span>
 						</div>
 						<div className="nav">
 							<ul>

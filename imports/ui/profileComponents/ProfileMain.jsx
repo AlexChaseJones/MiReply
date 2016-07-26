@@ -52,7 +52,7 @@ export default class ProfilePage extends TrackerReact(Component) {
 					<div className="container">
 						<div className="logo">
 							<img className="nav_img_md" src="/images/icons/cluster.png" />		
-							<span>Cluster</span>
+							<span>MiReply</span>
 						</div>
 						<div className="nav">
 							<ul>

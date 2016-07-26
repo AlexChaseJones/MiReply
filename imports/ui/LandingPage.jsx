@@ -86,7 +86,7 @@ export default class landingPage extends TrackerReact(Component) {
 					<div className="container">
 						<div className="logo">
 							<img className="nav_img_md" src="../../../images/icons/cluster.png" />		
-							<span>Cluster</span>
+							<span>MiReply</span>
 						</div>
 						<div className="login">
 							<form onSubmit={this.logIn}>
@@ -132,7 +132,7 @@ export default class landingPage extends TrackerReact(Component) {
 						</div>
 						<div className="landing_info">
 							 <div className="box_shadow_right"><div className="block_header_sm"></div>
-							 	<h1>Proversate</h1>
+							 	<h1>MiReply</h1>
 							 	<div className="line_seperator_md"></div>
 							 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <br /><br />Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint o ccaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 							 </div>

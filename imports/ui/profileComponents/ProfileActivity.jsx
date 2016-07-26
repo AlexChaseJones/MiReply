@@ -39,12 +39,18 @@ export default class ProfileActivity extends TrackerReact(Component) {
 			return (<ActivityPost user={this.props.user} post={post} key={post._id} />)
 		})
 
-		if (posts.length == 0) {
+		if (posts.length == 0 && Meteor.userId() == this.props.user._id) {
 			return (
 				<div className="friends_welcome">
 					<h1>You haven't posted anything on your board!</h1>
 					<p>Your board is viewable by anyone that visits your profile.</p>
 					<p>Boards hold up to ten messages, when you reach your eleventh post, the last board message will be removed and deleted forever. (and ever).</p>
+				</div>
+			)
+		} else if (posts.length == 0 && Meteor.userId() != this.props.user._id) {
+			return (
+				<div className="friends_welcome">
+					<h1>This user hasn't posted anything yet.</h1>
 				</div>
 			)
 		} else return posts.reverse().slice(0,10);
