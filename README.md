@@ -1,3 +1,5 @@
+###I am no longer hosting this project online as of February 2017
+
 # [MiReply](http://mireply.meteorapp.com/) - Dynamic Group Messaging Social Platform
 
 [MiReply](http://mireply.meteorapp.com/) is a personal project that I have been working on since early June 2016. It features all aspects of a social application that you would expect, namely friend requests, personal profiles with photos and posts, and messaging, but is built entirely in ES6 using cutting edge technologies such as Meteor and React. All data is stored in MLabs mongoDB, less user image uploads which I store in a AWS S3 Bucket for cost and loading optimization. All styling is done in CSS3, and as of July 2016 I am in the process of 'translating' it into Stylus (.styl) format for a more clear orginization.
