@@ -1,4 +1,4 @@
-###I am no longer hosting this project online as of February 2017
+### I am no longer hosting this project online as of February 2017
 
 # [MiReply](http://mireply.meteorapp.com/) - Dynamic Group Messaging Social Platform
 
